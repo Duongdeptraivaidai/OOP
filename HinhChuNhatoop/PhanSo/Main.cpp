@@ -1,10 +1,12 @@
 #include"PhanSo.h"
 
 int main() {
-	PhanSo ps1, ps2;
+
+
+    PhanSo ps1, ps2;
     cout << "Nhap phan so thu nhat: ";
     ps1.nhap();
-    cout << "Nhap phan so thu hai: " ;
+    cout << "Nhap phan so thu hai: ";
     ps2.nhap();
 
     PhanSo psTong = ps1.cong(ps2);
