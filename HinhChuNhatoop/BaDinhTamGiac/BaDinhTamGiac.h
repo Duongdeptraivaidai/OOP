@@ -5,8 +5,22 @@ using namespace std;
 class BaDinhTamGiac
 {
 private:
-	float A,B,C;
+	float A, B, C;
 public:
+	BaDinhTamGiac() {
+		this->A = 0;
+		this->B = 0;
+		this->C = 0;
+	}
+	BaDinhTamGiac(float a, float b, float c) {
+		this->A = a;
+		this->B = b;
+		this->C = c;
+	}
+	~BaDinhTamGiac() {
+		cout << "Huy ba dinh tam giac " << A << "," << B << "," << C << ",";
+	}
+
 	void nhap() {
 		cout << "Nhap gia tri ba dinh tam giac ABC: " << endl;
 		cout << "A: "; cin >> this->A;
@@ -30,4 +44,3 @@ public:
 		return chuvi;
 	}
 };
-
