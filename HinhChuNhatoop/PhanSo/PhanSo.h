@@ -24,9 +24,22 @@ public:
 		this->mauSo = mauso;
 	}
 	~PhanSo() {
-		cout << "Huy phan so" << tuSo << " " << mauSo << endl;
+		cout << "Huy phan so: " << tuSo << " " << mauSo << endl;
 	}
 
+	int getTuSo() {
+		return this->tuSo;
+	}
+	int getMauSo() {
+		return this->mauSo;
+	}
+
+	void setTuSo(int tuSo) {
+		 this->tuSo = tuSo;
+	}
+	void setMauSo(int mauSo) {
+		this->mauSo = mauSo;
+	}
 	void nhap() {
 		cout << "Nhap tu so: "; cin >> this->tuSo;
 		cout << "Nhap mau so: "; cin >> this->mauSo;
@@ -35,12 +48,52 @@ public:
 		cout << this->tuSo << "/" << this->mauSo << endl;
 	}
 	PhanSo cong(PhanSo ps2) {
-		PhanSo tong;
-		tong.tuSo = this->tuSo * ps2.mauSo + this->mauSo * ps2.tuSo;
-		tong.mauSo = this->mauSo * ps2.mauSo;
-		PhanSo ketQua = tong.rutGon();
+		PhanSo ketQua;
 		return ketQua;
 	}
+
+	PhanSo operator+(PhanSo ps2) {
+		PhanSo ketQua;
+		return ketQua;
+	}
+
+	friend istream& operator>>(istream& is, PhanSo& ps) {
+		cout << "Nhap tu so: "; is >> ps.tuSo;
+		cout << "Nhap mau so: "; is >> ps.mauSo;
+		return is;
+	}
+
+	friend ostream& operator<<(ostream& os, PhanSo ps) {
+		os << ps.tuSo << "/" << ps.mauSo << endl;
+		return os;
+	}
+
+	PhanSo operator++() {
+		PhanSo ketQua;
+		ketQua.tuSo = this->tuSo + this->mauSo;
+		ketQua.mauSo = this->mauSo;
+		this->tuSo = ketQua.tuSo;
+		this->mauSo = ketQua.mauSo;
+		return ketQua;
+	}
+
+	PhanSo& operator++(int) {
+		PhanSo ketQua;
+		ketQua.tuSo = this->tuSo;
+		ketQua.mauSo = this->mauSo;
+		this->tuSo = this->tuSo + this->mauSo;
+		this->mauSo = this->mauSo;
+		return ketQua;
+	}
+
+	bool operator>(PhanSo ps2) {
+		return this->tuSo * ps2.mauSo > this->mauSo * ps2.tuSo;
+	}
+
+	bool operator<(PhanSo ps2) {
+		return this->tuSo * ps2.mauSo < this->mauSo * ps2.tuSo;
+	}
+
 	PhanSo tru(PhanSo ps2) {
 		PhanSo hieu;
 		hieu.tuSo = this->tuSo * ps2.mauSo - this->mauSo * ps2.tuSo;
